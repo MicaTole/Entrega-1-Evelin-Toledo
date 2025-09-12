@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "title": "Inquebrantable",
+    "description": "Novela de Daniel Hafit.",
+    "code": "ISBN9780307474728",
+    "price": 3500,
+    "status": true,
+    "stock": 10,
+    "category": "Novela",
+    "thumbnails": ["inquebrantable.jpg"]
+  },
+  {
+    "id": "2",
+    "title": "El Principito",
+    "description": "Sobre la inocencia y la amistad.",
+    "code": "ISBN9780156012195",
+    "price": 2000,
+    "status": true,
+    "stock": 5,
+    "category": "Infantil/adolescente",
+    "thumbnails": ["principito.jpg"]
+  }
+]
