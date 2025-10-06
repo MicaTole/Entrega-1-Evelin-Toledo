@@ -1,9 +1,27 @@
 const express = require('express');
 const ProductManager = require('./ProductManager');
 const CartManager = require('./CartManager');
+const exphbs = require('express-handlebars');
+const http = require('http');
+const { Server } = require('socket.io');
 
 const app = express();
 const PORT = 8080;
+
+app.engine('handlebars', exphbs.engine());
+app.set('view engine', 'handlebars');
+app.set('views', __dirname + '/views');
+
+const server = http.createServer(app);
+const io = new Server(server);
+
+app.use(express.json());
+
+
+app.get('/', async (req, res) => {
+  const products = await pm.getProducts();
+  res.render('home', { products });
+});
 
 const pm = new ProductManager('products.json');
 const cm = new CartManager('carts.json');
@@ -60,5 +78,11 @@ app.post('/api/carts/:cid/product/:pid', async (req, res) => {
   const actualizado = await cm.addProductToCart(req.params.cid, req.params.pid);
   actualizado ? res.json(actualizado) : res.status(404).json({ error: 'Error al agregar producto' });
 });
+
+io.on('connection', (socket) => {
+  console.log('Cliente conectado');
+});
+
+
 
 app.listen(PORT, () => console.log(`Servidor en http://localhost:${PORT}`));

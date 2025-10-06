@@ -1,0 +1,18 @@
+ 
+<h1>Libros disponibles</h1>
+<ul id="productos">
+  {{#each products}}
+    <li>{{title}} - ${{price}}</li>
+  {{/each}}
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  socket.on('nuevoProducto', (producto) => {
+    const ul = document.getElementById('productos');
+    const li = document.createElement('li');
+    li.textContent = `${producto.title} - $${producto.price}`;
+    ul.appendChild(li);
+  });
+</script>
