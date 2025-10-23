@@ -1,5 +1,11 @@
 {
+  "name": "entrega-1-evelin-toledo",
+  "version": "1.0.0",
+  "type": "module",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "mongoose": "^8.19.2",
+    "socket.io": "^4.8.1"
   }
 }
